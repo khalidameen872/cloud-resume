@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid's Resume</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins for headings, Lato for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Lato', sans-serif; /* Professional and readable body font */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Subtle gradient background */
+            line-height: 1.8; /* Enhanced line height for better readability */
+            color: #333d4d; /* Darker, sophisticated text color */
+            margin: 0;
+            padding: 2.5rem 0; /* Add vertical padding to body */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+        }
+
+        /* Main Container Styling */
+        .container {
+            max-width: 980px; /* Slightly wider container */
+            width: 95%; /* Responsive width */
+            background-color: #ffffff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Deeper, more elegant shadow */
+            border-radius: 1.5rem; /* More pronounced rounded corners */
+            padding: 4rem; /* Generous padding */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Smooth transitions for hover */
+        }
+        .container:hover {
+            transform: translateY(-8px); /* More noticeable lift on hover */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            font-family: 'Poppins', sans-serif; /* Stronger, more modern font for titles */
+            position: relative;
+            padding-bottom: 1.5rem; /* More space below title for underline */
+            margin-bottom: 3rem; /* Increased margin below title */
+            color: #2c3e50; /* Deep charcoal for titles */
+            font-size: 2.75rem; /* Larger font size for impact */
+            font-weight: 700; /* Bolder titles */
+            text-transform: uppercase;
+            letter-spacing: 0.1em; /* Increased letter spacing */
+            text-align: center; /* Center align titles */
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px; /* Wider, prominent underline */
+            height: 5px; /* Thicker underline */
+            background: linear-gradient(to right, #4CAF50, #2196F3); /* Vibrant gradient underline */
+            border-radius: 3px;
+        }
+
+        /* Icon Styling */
+        .icon {
+            display: inline-block;
+            width: 1.4em; /* Larger icons */
+            height: 1.4em;
+            vertical-align: middle;
+            fill: currentColor;
+            margin-right: 0.8rem; /* More space after icons */
+            color: #3b82f6; /* Bright blue for icons */
+        }
+
+        /* Link Styling */
+        a {
+            color: #2196F3; /* Consistent vibrant blue for links */
+            transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+            display: inline-block; /* Allows transform on hover */
+        }
+        a:hover {
+            color: #1976D2; /* Darker blue on hover */
+            text-decoration: underline;
+            transform: translateX(5px); /* Subtle slide effect on hover */
+        }
+
+        /* List Item Styling */
+        ul.list-disc li {
+            margin-bottom: 0.8rem; /* More space between list items */
+            padding-left: 0.8rem; /* Increased indent */
+            line-height: 1.7; /* Ensures good spacing for multi-line list items */
+        }
+
+        /* Header Specific Styles */
+        h1 {
+            font-family: 'Poppins', sans-serif; /* Main name uses Poppins */
+            font-weight: 800; /* Extra bold */
+            font-size: 5.5rem; /* Larger for more impact */
+            letter-spacing: 0.15em; /* Increased letter spacing */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+            color: #2c3e50; /* Deep charcoal */
+        }
+        .header-info-item {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem 1.2rem; /* More generous padding */
+            background-color: #e0f2f7; /* Lighter background for info bubbles */
+            border-radius: 2rem; /* More pill-shaped */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1.15rem; /* Slightly larger text in info bubbles */
+            font-weight: 500;
+        }
+        .header-info-item:hover {
+            background-color: #d1ecf1;
+            transform: translateY(-3px); /* Subtle lift on hover */
+        }
+
+        /* Project & Education Item Styling */
+        .project-item, .education-item {
+            background-color: #f7f9fc; /* Very light background for items */
+            padding: 1.5rem 2rem; /* Consistent padding */
+            border-left: 5px solid #4CAF50; /* Accent border on the left */
+            border-radius: 0.5rem; /* Slightly rounded corners */
+            margin-bottom: 1.5rem; /* Space between items */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-item:hover, .education-item:hover {
+            transform: translateX(5px); /* Subtle slide effect on hover */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
+        }
+        .project-item h3, .education-item p.font-bold {
+            color: #2c3e50; /* Darker title for items */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .education-item p.font-medium {
+            color: #5f7a9a; /* Softer color for dates/details */
+        }
+
+        /* Grid Layout for Skills */
+        .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adaptive columns */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 3rem;
+            }
+            h1 {
+                font-size: 4.5rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1.5rem;
+                padding: 2.5rem 1.5rem; /* Adjust padding for smaller screens */
+                border-radius: 1rem;
+            }
+            h1 {
+                font-size: 3.5rem;
+                letter-spacing: 0.1em;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            .section-title::after {
+                width: 80px;
+                height: 4px;
+            }
+            .header .flex {
+                flex-direction: column;
+                align-items: center; /* Center items for better stacking */
+                gap: 1rem;
+            }
+            .header-info-item {
+                width: 100%; /* Make info items full width */
+                justify-content: center; /* Center content in info items */
+            }
+            .project-item, .education-item {
+                padding: 1.2rem 1.5rem;
+            }
+            p.text-lg, ul.text-lg li {
+                font-size: 1rem; /* Adjust general text size */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+            }
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: 0.08em;
+            }
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .section-title::after {
+                width: 60px;
+                height: 3px;
+            }
+            .header-info-item {
+                padding: 0.5rem 1rem;
+                font-size: 0.95rem;
+            }
+            .icon {
+                width: 1.1em;
+                height: 1.1em;
+                margin-right: 0.6rem;
+            }
+            p.text-lg, ul.text-lg li {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Visitor Counter Section Styling (New) */
+        .visitor-counter-section {
+            text-align: center;
+            margin-top: 4rem; /* More spacing from previous section */
+            padding: 2.5rem; /* Generous padding */
+            background: linear-gradient(45deg, #e0f7fa, #bbdefb); /* Light blue gradient background */
+            border-radius: 1.25rem; /* Rounded corners */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .visitor-counter-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .visitor-counter-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem; /* Larger heading for the counter */
+            font-weight: 700;
+            color: #2c3e50; /* Dark charcoal */
+            margin-bottom: 1.5rem;
+        }
+
+        .visitor-count-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem; /* Very large number */
+            font-weight: 800;
+            color: #1976D2; /* Strong blue for the count */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for the number */
+            margin-top: 1rem;
+        }
+
+        .visitor-count-display svg {
+            width: 2.5em; /* Larger icon */
+            height: 2.5em;
+            fill: currentColor;
+            margin-right: 1rem; /* More space from number */
+            color: #4CAF50; /* Green accent for the icon */
+        }
+
+        .counter-error-message {
+            color: #ef4444; /* Red color for error */
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container">
+
+        <!-- Header Section -->
+        <header class="flex flex-col items-center justify-center mb-16 text-center">
+            <h1 class="text-6xl sm:text-7xl font-extrabold mb-8 tracking-wider">KHALID</h1>
+            <div class="flex flex-wrap justify-center items-center gap-y-4 gap-x-6 text-xl text-gray-700">
+                <div class="header-info-item">
+                    <!-- Phone Icon SVG -->
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2H7zm4 18a1 1 0 110-2 1 1 0 010 2z"/>
+                    </svg>
+                    <span>+91 8887888256</span>
+                </div>
+                <div class="header-info-item">
+                    <!-- Location Icon SVG -->
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Pari Chowk, Greater Noida</span>
+                </div>
+                <div class="header-info-item">
+                    <!-- Email Icon SVG -->
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 4.54C2.01 3.53 2.89 3 3.99 3h16.02c1.1 0 1.98.53 1.98 1.54L12 13.01 2.01 4.54zM2 6.54L2 19c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6.54l-10 8.5L2 6.54z"/>
+                    </svg>
+                    <span>Khalidameen872@gmail.com</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Me Section -->
+        <section class="mb-16">
+            <h2 class="section-title">ABOUT ME</h2>
+            <p class="text-gray-700 leading-relaxed text-lg md:text-xl text-center px-4">
+                I am a certified AWS Cloud Practitioner with a strong foundation in cloud computing, DevOps, and CI/CD
+                pipeline implementation. Passionate about automating infrastructure, managing cloud resources, and
+                streamlining deployments using modern tools and best practices. With a background in BCA and hands-on
+                experience in Git, Linux, CI/CD workflows, and tools like Terraform and Docker, I am eager to contribute to
+                scalable and efficient cloud-based solutions.
+            </p>
+        </section>
+
+        <!-- Education Section -->
+        <section class="mb-16">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="education-item flex flex-col md:flex-row md:justify-between items-start md:items-center">
+                <div class="text-gray-700 mb-2 md:mb-0">
+                    <p class="font-medium text-lg">2023-2026</p>
+                    <p class="font-bold text-2xl">Galgotias University</p>
+                </div>
+                <div class="text-gray-700 md:text-right">
+                    <p class="font-medium text-lg">Bachelors Of Computer Applications</p>
+                    <p class="italic text-lg">(Cyber-Security)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="mb-16">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="project-item mb-8">
+                <h3 class="text-2xl font-semibold mb-2">Static Website Hosting on S3</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Hosted a static HTML/CSS website on Amazon S3 with public access enabled and proper bucket policy.
+                    Configured CloudFront for CDN and HTTPS.
+                </p>
+            </div>
+            <div class="project-item">
+                <h3 class="text-2xl font-semibold mb-2">CICD /Pipeline with GitHub Actions</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Implemented a simple CI/CD pipeline for a Python or Node.js app using GitHub Actions.
+                    Configured automated build and test stages.
+                </p>
+            </div>
+        </section>
+
+        <!-- Certificates / Achievements Section -->
+        <section class="mb-16">
+            <h2 class="section-title">CERTIFICATES / ACHIEVEMENTS</h2>
+            <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4 text-lg">
+                <li><a href="https://www.linkedin.com/posts/khalid-ameen-a6674a255_aws-certified-cloud-practitioner-was-issued-activity-7331036786887962624-CLDf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD7vsW4BgDKt7Y8Dx9K4tmXsfHfTqR4M57U" target="_blank">AWS Certified Cloud Practitoner</a></li>
+                <li><a href="https://www.linkedin.com/posts/khalid-ameen-a6674a255_entrepreneurship-iitmadras-nptel-activity-7313901543466942464-kIM9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD7vsW4BgDKt7Y8Dx9K4tmXsfHfTqR4M57U" target="_blank">NPTEL Entrepreneurship Certification</a></li>
+                <li><a href="https://www.linkedin.com/posts/khalid-ameen-a6674a255_aws-cloudcomputing-devops-activity-7310758433626959872-ClyF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD7vsW4BgDKt7Y8Dx9K4tmXsfHfTqR4M57U" target="_blank">AWS Technical Essential Completion Certificate</a></li>
+                <li><a href="https://www.linkedin.com/posts/khalid-ameen-a6674a255_aws-cloudcomputing-devops-activity-7310758433626959872-ClyF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD7vsW4BgDKt7Y8Dx9K4tmXsfHfTqR4M57U" target="_blank">AWS Cloud Computing Completion Certificate</a></li>
+                <li><a href="https://www.linkedin.com/posts/khalid-ameen-a6674a255_networking-basics-was-issued-by-cisco-to-activity-7332458083996123137-7KXE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD7vsW4BgDKt7Y8Dx9K4tmXsfHfTqR4M57U" target="_blank">CISCO Basic Networking Certification</a></li>
+            </ul>
+        </section>
+
+        <!-- Programming Language Section -->
+        <section class="mb-16">
+            <h2 class="section-title">PROGRAMMING LANGUAGE</h2>
+            <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4 text-lg">
+                <li>Python</li>
+                <li>Linux</li>
+            </ul>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="mb-16">
+            <h2 class="section-title">SKILLS</h2>
+            <div class="grid skills-grid gap-x-12 gap-y-6 text-gray-700 text-lg">
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li>Cloud:- Amazon Web Services</li>
+                    <li>CI/CD:- Git (Git hub, GitLab, Jenkins Basics)</li>
+                    <li>Networking</li>
+                </ul>
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li>IAAC :- Aws cloud formation, TerraForm</li>
+                    <li>Containerization: Docker</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section>
+            <h2 class="section-title">SOCIAL MEDIA</h2>
+            <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4 text-lg">
+                <li>LinkedIN:- <a href="https://www.linkedin.com/in/khalid-ameena6674a255" target="_blank">https://www.linkedin.com/in/khalid-ameena6674a255</a></li>
+                <li>GIT HUB:- <a href="https://github.com/khalidameen872" target="_blank">https://github.com/khalidameen872</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <script>
+        fetch("https://1acdbp4zme.execute-api.us-east-1.amazonaws.com/counter")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            const visitorCount = data.visitorCount !== undefined ? data.visitorCount : data.visits;
+
+            if (visitorCount !== undefined) {
+              // Create the new section for the visitor counter
+              const visitorCounterSection = document.createElement('section');
+              visitorCounterSection.classList.add('visitor-counter-section'); // Apply new styling class
+
+              const counterTitle = document.createElement('h3');
+              counterTitle.textContent = 'Visitors to my Resume';
+              visitorCounterSection.appendChild(counterTitle);
+
+              const counterDisplay = document.createElement('div');
+              counterDisplay.classList.add('visitor-count-display'); // Apply new styling class
+              counterDisplay.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 4.5C7.5 4.5 4 7.5 4 12s3.5 7.5 8 7.5c4.5 0 8-3.5 8-7.5S16.5 4.5 12 4.5zm0 13c-3.03 0-5.5-2.47-5.5-5.5S8.97 6.5 12 6.5s5.5 2.47 5.5 5.5-2.47 5.5-5.5 5.5zm.5-9.5H11V8.5h1.5zm-.5 1.5c-1.38 0-2.5 1.12-2.5 2.5S10.62 14.5 12 14.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z"/>
+                </svg>
+                <span id="dynamicVisitorCount">${visitorCount}</span>
+              `;
+              visitorCounterSection.appendChild(counterDisplay);
+
+              document.querySelector('.container').appendChild(visitorCounterSection); // Append to the main container
+            } else {
+              console.error('Error: visitorCount or visits not found in API response data:', data);
+              const errorElement = document.createElement('p');
+              errorElement.textContent = 'Failed to load visitor count.';
+              errorElement.classList.add('counter-error-message'); // Apply error styling
+              document.querySelector('.container').appendChild(errorElement); // Append to the main container
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            const errorElement = document.createElement('p');
+            errorElement.textContent = `Failed to load visitor count. Error: ${error.message}`;
+            errorElement.classList.add('counter-error-message'); // Apply error styling
+            document.querySelector('.container').appendChild(errorElement); // Append to the main container
+          });
+    </script>
+</body>
+</html>
